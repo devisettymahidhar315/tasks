@@ -1,0 +1,25 @@
+kubernetes clusters using prometheus and visualize using grafana.
+
+Prometheus and Grafana are popular open-source monitoring and observability tools commonly used in Kubernetes environments to monitor the health, performance, and metrics of applications and infrastructure.
+
+promethus is the monitoring system
+it takes the data from api server. 
+promethus show data in json format, which is not good.
+
+so grapahana cames into picture. graphana takes the data from promethus and visulaize the data.
+
+
+Prometheus Components:
+Prometheus Server: Central component responsible for collecting and storing time-series data.
+Prometheus Alertmanager: Handles alerts sent by Prometheus server and manages alert notifications.
+Prometheus Exporters: Collect metrics from various sources and expose them in a format Prometheus can scrape.
+Prometheus Web UI: Provides a graphical interface to explore metrics and execute PromQL queries.
+
+Grafana Components:
+Grafana Server: Core component that serves the Grafana web interface and handles data visualization and dashboard rendering.
+Grafana Plugins: Extend Grafana's capabilities with additional data sources, panels, and features.
+Grafana Dashboards: Pre-built and custom dashboards to visualize metrics and logs from different data sources.
+
+
+Prometheus scrapes metrics from Kubernetes components, applications, and services using service discovery and custom exporters.
+Grafana connects to Prometheus as a data source to visualize the collected metrics and create dashboards for monitoring and observability.
