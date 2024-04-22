@@ -1,0 +1,66 @@
+rbac= role based access controll
+way of granting users access to kubernetes api resources.
+it is  a security desugn that restricts access to kubernetes resources based on the role the user holds.
+
+
+conatains two roles and two bindings
+
+roles
+1 role
+2 cluster role
+
+bindings
+1 role binding
+2 cluster binding
+
+role ans role binding is namespace
+cluster role and cluster binding is cluster wise
+
+3 types of entities
+
+1 user human
+2 group set of humans
+3 service account used by pods inside the clusrer
+
+
+example for role:
+here we are giving access all in test namepsace
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: testadmin
+  namespace: test
+rules:
+  - apiGroups: ['*']
+    resources: ['*']
+    verbs: ['*']
+
+ 
+here we are giving only pods are accesiable,
+rules:
+  - apiGroups: ['*']
+    resources: ["pods"]
+    verbs: ["get"]
+
+example for role binding:
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: testadminbinding
+  namespace: test
+subjects:
+  - kind: ServiceAccount
+    name: myaccount
+    namespace: test
+roleRef:
+  kind: Role
+  name: testadmin
+  apiGroup: rbac.authorization.k8s.io
+
+
+important comands:
+ kubectl get pods --namespace=test --as=system:serviceaccount:test:myaccount
+kubectl auth can-i get pods -n test --as=system:serviceaccount:test:myaccount
+
+
