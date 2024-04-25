@@ -23,3 +23,11 @@ Grafana Dashboards: Pre-built and custom dashboards to visualize metrics and log
 
 Prometheus scrapes metrics from Kubernetes components, applications, and services using service discovery and custom exporters.
 Grafana connects to Prometheus as a data source to visualize the collected metrics and create dashboards for monitoring and observability.
+
+pods present in promethus:
+
+prometheus-prometheus-0: The primary pod on which Prometheus server is deployed.
+prometheus-alertmanager-0: The Alertmanager pod, which is used to manage alerts and send notifications.
+prometheus-node-exporter-4q4lc: The node exporter pod that collects metrics from the underlying host system and make collected metrics available to the Prometheus UI.
+prometheus-pushgateway-c8f8f88bb-dk7c2: The Pushgateway pod to collect metrics from batch jobs or other non-service sources.
+prometheus-server-exporter-8wz6h: The server exporter pod to collect metrics from other services running in the same Kubernetes cluster.
