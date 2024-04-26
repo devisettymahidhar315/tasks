@@ -1,0 +1,9 @@
+flask is web framework, used to build lightweight web appplications.
+it is based on WSGI and JINJA2 template engine.
+
+wsgi
+web server gateway interface.
+interface betweenn web servers and web apps.
+
+jinja2
+web template engine which combines a template with a certain data source to render the dynamic web pages
