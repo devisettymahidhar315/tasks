@@ -1,10 +1,23 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 
-app= Flask(__name__)
+app = Flask(__name__)
 
-@app.route("/")
-def jk():
-    return 'please like '
+@app.route('/student')
+def student():
+    return 'This is student.'
 
-if __name__=='__main__':
+@app.route('/staff')
+def staff():
+    return 'This is staff.'
+
+@app.route('/user/<name>')
+def user(name):
+    if name == 'student':
+        return redirect(url_for('student'))
+    elif name == 'staff':
+        return redirect(url_for('staff'))
+    else:
+        return f'Hello {name}!'
+
+if __name__ == '__main__':
     app.run()

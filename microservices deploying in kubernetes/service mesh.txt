@@ -1,0 +1,38 @@
+service mesh:
+manages the communication between micro service.
+
+
+microservice architecture:
+bussiness logic
+communication configuration
+security logic
+retry logic
+metrics
+tracing
+
+service mesh is a pattern. istio is one of the implementation
+
+istio architecture:
+in the control plane has istiod.
+in the data plane has envoy proxy.
+combination of istiod and envoy proxy of all data plane.
+
+user-gateway-virtual service- mtls- webser (microservice)-envoy proxy-code. 
+
+Imp
+********
+to work with Istio
+
+firstly we need to run this command
+export PATH=$PATH:/home/ubuntu/istio-1.21.2/bin
+
+
+Imp
+Prometheus Monitoring .
+Grafana = data visualization
+jaeger=open source , for tracing the microservice request
+tracing= trace the whole chain.
+zipkin=alternative to jaeger
+
+kiali =data visualization for microservice step and communication.
+
