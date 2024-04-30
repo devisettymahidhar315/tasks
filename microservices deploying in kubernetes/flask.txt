@@ -7,3 +7,39 @@ interface betweenn web servers and web apps.
 
 jinja2
 web template engine which combines a template with a certain data source to render the dynamic web pages
+
+
+from flask import Flask, redirect, url_for, render_template
+
+app = Flask(__name__)
+
+# Sample data (replace with your actual data)
+students = [
+    {'id': 1, 'name': 'John Doe'},
+    {'id': 2, 'name': 'Joe'}
+]
+
+staff_members = [
+    {'id': 1, 'name': 'Jane Smith'},
+    {'id': 2, 'name': 'Jack Brown'}
+]
+
+@app.route('/student')
+def student():
+    return render_template('student.html', students=students)
+
+@app.route('/staff')
+def staff():
+    return render_template('staff.html', staff=staff_members)
+
+@app.route('/user/<name>')
+def user(name):
+    if name == 'student':
+        return redirect(url_for('student'))
+    elif name == 'staff':
+        return redirect(url_for('staff'))
+    else:
+        return f'Hello {name}!'
+
+if __name__ == '__main__':
+    app.run()

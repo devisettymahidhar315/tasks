@@ -36,3 +36,41 @@ zipkin=alternative to jaeger
 
 kiali =data visualization for microservice step and communication.
 
+
+
+service mesh:
+
+helps the traffic management of the Kubernetes cluster. especially east-west traffic.
+traffic between the services is called east-west traffic.
+traffic comes from outside of the cluster is called north-south(ingress) traffic.
+
+Istio says traffic management between east-west.
+Istio adds the mtls for security. we can deployment strategies called  canary and a-b easily.
+Istio cames with kiali(track the information between service to service), we need to enable only.
+
+in tls=client will show the certificates to server after they will talk.
+were in mutual tls , both server and client will show their certificates, after they used to talk.
+
+canary.
+there is payment of v1, we have created the v2. login page will show the traffic 10 to v2 and 90 to v1. showly it will shifted to 100 to v2 all good means.
+
+for every pod, a side car container is installed. in side car a envoy proxy is present.
+upcoming and outgoing traffic will interpret the envoy proxy.
+
+login-envoy proxy- sends the certificates-envoy proxy of database - checks the certificates and shows the database certificates-database code.
+all sidecars send the information to istiod(present in control plane) for metrics.
+
+
+Admission Controller:
+user says add a pod
+step1 : api server(authecation and authetion)
+step2 : storing the data in etcd.
+in step 2 we have admission controller.
+admission controller will do mutate(modify) and validate
+30+ admission controller.
+
+Istio uses dynamic admission control
+
+
+
+

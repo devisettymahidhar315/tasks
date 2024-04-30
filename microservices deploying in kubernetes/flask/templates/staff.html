@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>staff</title>
+</head>
+<body>
+    <h1 class="title">staff</h1>
+    <div class="content">
+        {% for student in staf.query.all() %}
+            <div class="student">
+                <p><b>{{ student.id }}</b></p>
+                <b>
+                    <p class="name">{{ student.firstname }}</p>
+                </b>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
