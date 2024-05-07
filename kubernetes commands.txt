@@ -3,3 +3,7 @@ kubectl get ns default --show-labels
 
 to add labels
 kubectl label namespace default istio-injection=enabled
+
+
+clusterip to nodeport:
+kubectl patch svc -n argocd argocd-server -p '{"spec": {"type": "NodePort", "ports": [{"port": 8080, "nodePort": 30808, "name": "http"}]}}' --type merge
