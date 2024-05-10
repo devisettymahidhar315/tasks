@@ -1,0 +1,106 @@
+need to create the vpc with public and private subnets and create a ec2 instance for private subnet.
+
+1) create a vpc
+2) create a subnets which is private and public
+3) routing tables
+4) route table association
+
+
+root_directory/
+├── main.tf
+└── modules/
+    └── ec2_instance/
+        └── main.tf
+
+root_directory/modules/ec2_instance/main.tf
+
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "my_vpc" {
+  cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "MyVPC"
+  }
+}
+
+resource "aws_subnet" "public_subnet" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "your_availability_zone"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "PublicSubnet"
+  }
+}
+
+resource "aws_subnet" "private_subnet" {
+  vpc_id            = aws_vpc.my_vpc.id
+  cidr_block        = "10.0.2.0/24"
+  availability_zone = "your_availability_zone"
+  tags = {
+    Name = "PrivateSubnet"
+  }
+}
+
+resource "aws_route_table" "public_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.my_igw.id
+  }
+}
+
+resource "aws_route_table_association" "public_subnet_association" {
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
+resource "aws_route_table" "private_route_table" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+resource "aws_route_table_association" "private_subnet_association" {
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.private_route_table.id
+}
+
+resource "aws_internet_gateway" "my_igw" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+variable "ami_value" {
+    description = "value for the ami"
+}
+
+variable "instance_type_value" {
+    description = "value for instance_type"
+}
+
+resource "aws_instance" "private_instances" {
+  count         = 10
+  ami           = var.ami_value  # replace with your AMI ID
+  instance_type = var.instance_type_value
+  subnet_id     = aws_subnet.private_subnet.id
+  tags = {
+    Name = "PrivateInstance-${count.index + 1}"
+  }
+}
+
+
+
+root_directory/main.tf
+
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+module "ec2_instance" {
+  source = "./modules/ec2_instance"
+  ami_value = "ami-053b0d53c279acc90" 
+  instance_type_value = "t2.micro"
+}

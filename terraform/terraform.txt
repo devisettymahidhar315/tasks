@@ -1,0 +1,86 @@
+Terraform:
+
+
+infrastructure provisioning
+automate and manage your infrastructure.
+and platform
+uses the declarative.
+
+declarative vs imperative
+declarative means specify what end result you want
+imperative means define exact steps.
+
+ansible vs terraform
+are both infrastructure as a code
+both automate provisioning, configuring and managing the infrastructure.
+
+
+diff:
+
+terraform:
+mainly infrastructure provisioning tool
+can deploy apps
+
+
+ansible:
+mainly a configuration tool
+configure that infrastructure
+deploy apps
+install/update the software.
+
+use cases of terraform:
+replicating the infrastructure is easy
+
+architecture:
+
+two main components:
+1.core
+2.providers like aws/azure like [iaas]
+                 Kubernetes [paas]
+		 fastly [saas]
+
+terraform  has 100+ provides.
+
+
+core takes two input sources 
+1.TF-Config
+2.State- contains current state of the setup
+
+core will take the input from the config file and check the state after that it will plan like what needs to be then like create/update/destroy.
+
+once core creates the execute plane based on the input from the config file and state then uses the providers uses specific technologies to execute the plane with providers.
+
+
+commands:
+refresh : query the infrastructure provider to get the current state
+plan: create an execution plan
+determines what actions are necessary to achieve the desired state
+just a preview, no changes to real resources
+apply: execute the plan
+destroy: destroy the resources/infrastructure.
+
+
+plan is the preview, what will happen. when we click the apply refresh will run and get the state and create the plan and applied it.
+
+
+
+
+
+
+built in functions:
+
+
+concat(list1, list2, ...): Combines multiple lists into a single list.
+element(list, index): Returns the element at the specified index in a list.
+length(list): Returns the number of elements in a list.
+map(key, value): Creates a map from a list of keys and a list of values.
+lookup(map, key): Retrieves the value associated with a specific key in a map.
+join(separator, list): Joins the elements of a list into a single string using the specified separator.
+
+
+IGW:
+used for public subnets.
+It essentially serves as a gateway for internet-bound traffic to enter or leave your VPC.
+
+
+

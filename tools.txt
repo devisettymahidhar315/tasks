@@ -1,0 +1,136 @@
+cloud computing:
+the data present in the cloud.
+if the data in the cloud, without internet you can't access the data.
+service as 3 types
+Iass == infrastructure as a service ex=aws-ec2 google cloud, Microsoft azure
+Paas == platform as a service ex=google app engine, force.com
+Saas == software as a service ex=gmail, aws, netsuite
+
+
+on-premise:
+we should only manage every thing.
+
+IaaS:
+we need to install all the things after we can run our application
+ users are responsible for managing these VMs, including installing and configuring the necessary software and tools to run their applications.
+IaaS is a cloud service model that consists of provisioning and managing computing resources over the Internet; such as servers, storage, networking and virtualization.
+
+ 
+
+PaaS:
+PaaS is a cloud service model that provides a ready-to-use development environment where developers can focus on writing and executing high-quality code in order to create customized applications.
+
+SaaS:
+SaaS is a cloud service model that consists of delivering cloud-based applications to users over the Internet. Software is hosted online and made available to customers on a subscription basis or for purchase.
+
+Examples of IaaS, PaaS and SaaS
+
+IaaS
+Stackscale
+Amazon Web Services
+Google Cloud
+VMware
+Microsoft Azure
+OVH
+OpenStack
+
+PaaS
+Heroku
+Google App Engine
+OpenShift
+Apache Stratos
+Flynn
+Cloud Foundry
+
+SaaS
+Acumbamail
+Salesforce
+Gmail
+Google Drive
+Dropbox
+Slack
+Trello
+GoToMeeting
+
+
+Tools used in devops:
+
+Jenkins
+argocd
+ansible
+terraform = aws account 
+github actions
+Prometheus and Grafana
+
+
+
+Terraform:
+
+
+infrastructure provisioning
+automate and manage your infrastructure.
+and platform
+uses the declarative.
+
+declarative vs imperative
+declarative means specify what end result you want
+imperative means define exact steps.
+
+ansible vs terraform
+are both infrastructure as a code
+both automate provisioning, configuring and managing the infrastructure.
+
+
+diff:
+
+terraform:
+mainly infrastructure provisioning tool
+can deploy apps
+
+
+ansible:
+mainly a configuration tool
+configure that infrastructure
+deploy apps
+install/update the software.
+
+use cases of terraform:
+replicating the infrastructure is easy
+
+architecture:
+
+two main components:
+1.core
+2.providers like aws/azure like [iaas]
+                 Kubernetes [paas]
+		 fastly [saas]
+
+terraform  has 100+ provides.
+
+
+core takes two input sources 
+1.TF-Config
+2.State- contains current state of the setup
+
+core will take the input from the config file and check the state after that it will plan like what needs to be then like create/update/destroy.
+
+once core creates the execute plane based on the input from the config file and state then uses the providers uses specific technologies to execute the plane with providers.
+
+
+commands:
+refresh : query the infrastructure provider to get the current state
+plan: create an execution plan
+determines what actions are necessary to achieve the desired state
+just a preview, no changes to real resources
+apply: execute the plan
+destroy: destroy the resources/infrastructure.
+
+
+plan is the preview, what will happen. when we click the apply refresh will run and get the state and create the plan and applied it.
+
+
+
+
+
+ 
+

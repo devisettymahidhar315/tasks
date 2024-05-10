@@ -1,0 +1,21 @@
+terraform init
+
+terraform plan
+
+terraform apply
+
+terraform destroy
+
+terraform validate
+
+terraform apply -var-file=dev.tfvars
+
+terraform workspace create workspace_name
+
+terraform workspace select workspace_name
+
+terraform workspace delete workspace_name
+
+
+
+
